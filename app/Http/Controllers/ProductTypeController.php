@@ -2,67 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class ProductTypeController extends Controller
 {
-    /**
-     * Muestra una lista de los recursos (tipos de producto/categorías).
-     */
     public function index()
     {
-        // NOTA: Aquí iría la lógica para obtener todos los tipos de producto
-        // $productTypes = ProductType::all();
-        
-        // Carga la vista product-types.blade.php (asumiendo que está en /resources/views)
-        return view('typeProduct'); 
+        $types = ProductType::all();
+        return view('typeProduct', compact('types'));
     }
 
-    /**
-     * Muestra el formulario para crear un nuevo recurso.
-     */
     public function create()
     {
-        // return view('product-types-create'); // Vista para el formulario de creación
+        $types = ProductType::all();
+        $showCreateForm = true;
+        return view('typeProduct', compact('types', 'showCreateForm'));
     }
 
-    /**
-     * Almacena un recurso recién creado en la base de datos.
-     */
     public function store(Request $request)
     {
-        // Lógica para guardar el tipo de producto...
+        $request->validate([
+            'name' => 'required|string|max:255|unique:product_types,name',
+        ]);
+
+        ProductType::create($request->all());
+
+        return redirect()->route('product-types.index')
+            ->with('success', 'Categoría creada correctamente.');
     }
 
-    /**
-     * Muestra el recurso especificado.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $typeToEdit = ProductType::findOrFail($id);
+        $types = ProductType::all();
+        return view('typeProduct', compact('types', 'typeToEdit'));
     }
 
-    /**
-     * Muestra el formulario para editar el recurso especificado.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:product_types,name,' . $id,
+        ]);
+
+        $type = ProductType::findOrFail($id);
+        $type->update($request->all());
+
+        return redirect()->route('product-types.index')
+            ->with('success', 'Categoría actualizada correctamente.');
     }
 
-    /**
-     * Actualiza el recurso especificado en el almacenamiento.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
+        $type = ProductType::findOrFail($id);
+        
+        if ($type->products()->count() > 0) {
+            return redirect()->route('product-types.index')
+                ->with('error', 'No se puede eliminar la categoría porque tiene productos asociados.');
+        }
 
-    /**
-     * Elimina el recurso especificado del almacenamiento.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $type->delete();
+
+        return redirect()->route('product-types.index')
+            ->with('success', 'Categoría eliminada correctamente.');
     }
 }

@@ -1,5 +1,5 @@
 /* ------------------------------------- */
-/* ESTILOS BASE Y ALTURA COMPLETA */
+/* ESTILOS BASE */
 /* ------------------------------------- */
 body {
     background-color: #f8f9fa;
@@ -18,7 +18,7 @@ body {
 /* ------------------------------------- */
 .navbar {
     z-index: 1000;
-    height: 70px; /* Altura fija para sincronizar márgenes */
+    height: 70px;
     display: flex;
     align-items: center;
 }
@@ -27,14 +27,16 @@ body {
 /* SIDEBAR */
 /* ------------------------------------- */
 #sidebar {
-    z-index: 1100;
+    z-index: 100;
     position: relative;
     width: 250px;
     min-width: 250px;
     background-color: #212529 !important;
     color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* 👈 espacio debajo de la navbar */
+    margin-top: 70px;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
 }
 
 .sidebar-header {
@@ -75,11 +77,22 @@ body {
     flex-grow: 1;
     padding: 30px;
     background-color: #f8f9fa;
-    margin-top: 70px; /* 👈 baja el contenido debajo de la navbar */
+    margin-top: 70px;
     min-height: calc(100vh - 70px);
 }
 
 #main-content .card {
     border-left: 5px solid #0d6efd;
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+/* SOLUCIÓN PARA INPUTS BLOQUEADOS */
+.form-control, .btn, select, textarea, input {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
 }

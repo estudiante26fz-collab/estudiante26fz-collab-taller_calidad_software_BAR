@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TypeProductController; 
+use App\Http\Controllers\ProductTypeController; 
 use Illuminate\Support\Facades\Route;
 
 // ----------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('products', ProductController::class);
         
         // Crea product-types.index, product-types.create, etc.
-        Route::resource('product-types', TypeProductController::class);
+        Route::resource('product-types', ProductTypeController::class);
 
     
 
