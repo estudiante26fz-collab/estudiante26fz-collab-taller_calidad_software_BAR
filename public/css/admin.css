@@ -1,0 +1,85 @@
+/* ------------------------------------- */
+/* ESTILOS BASE Y ALTURA COMPLETA */
+/* ------------------------------------- */
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Altura total del contenedor */
+.d-flex {
+    min-height: 100vh;
+}
+
+/* ------------------------------------- */
+/* NAVBAR FIJA ARRIBA */
+/* ------------------------------------- */
+.navbar {
+    z-index: 1000;
+    height: 70px; /* Altura fija para sincronizar márgenes */
+    display: flex;
+    align-items: center;
+}
+
+/* ------------------------------------- */
+/* SIDEBAR */
+/* ------------------------------------- */
+#sidebar {
+    z-index: 1100;
+    position: relative;
+    width: 250px;
+    min-width: 250px;
+    background-color: #212529 !important;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 70px; /* 👈 espacio debajo de la navbar */
+}
+
+.sidebar-header {
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 1rem;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#sidebar .list-group-item {
+    background-color: #212529;
+    border: none;
+    padding: 0;
+}
+
+#sidebar a {
+    color: #adb5bd;
+    padding: 0.75rem 1rem;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#sidebar a:hover,
+#sidebar .list-group-item.active a {
+    color: #ffffff;
+    background-color: #495057;
+    text-decoration: none;
+}
+
+/* ------------------------------------- */
+/* CONTENIDO PRINCIPAL */
+/* ------------------------------------- */
+#main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+    margin-top: 70px; /* 👈 baja el contenido debajo de la navbar */
+    min-height: calc(100vh - 70px);
+}
+
+#main-content .card {
+    border-left: 5px solid #0d6efd;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
