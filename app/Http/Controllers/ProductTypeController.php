@@ -68,3 +68,6 @@ class ProductTypeController extends Controller
     }
 }
 
+
+//espacio
+

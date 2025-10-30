@@ -71,6 +71,10 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeo5s84Knbv9rFQrs9awq20Uu3lzjwW5K5p6x5WF5QXF7CM" 
+    crossorigin="anonymous">
+</script>
 </body>
 </html>

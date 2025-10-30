@@ -16,20 +16,20 @@
             <div class="error">{{ $errors->first() }}</div> <!-- dudas<----------------------- -->
         @endif <!-- dudas<----------------------- -->
 
-        <form method="POST" action="{{ route('login.perform') }}"> <!-- dudas<----------------------- -->
-            @csrf <!-- dudas<----------------------- -->
+        <form method="POST" action="{{ route('login') }}">
+    @csrf
 
-            <label>Correo Electrónico</label>
-            <input type="email" name="email" value="{{ old('email') }}"> <!-- dudas<----------------------- -->
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" value="{{ old('email') }}">
 
-            <label>Contraseña</label>
-            <input type="password" name="password">
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password">
 
-            <label><input type="checkbox" name="remember">Recuérdame</label>
+    <input type="checkbox" id="remember" name="remember">
+    <label for="remember">Recuérdame</label>
 
-            <button type="submit">Iniciar Sesión</button>
-
-        </form>
+    <button type="submit">Iniciar Sesión</button>
+</form>
         </div>
     </body>
 </html>
