@@ -67,3 +67,4 @@ class ProductTypeController extends Controller
             ->with('success', 'Categoría eliminada correctamente.');
     }
 }
+
